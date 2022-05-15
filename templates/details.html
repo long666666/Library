@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍详情</title>
+    <link rel="stylesheet" href="/static/css/details.css">
+</head>
+<body>
+<div class="head">
+</div>
+<div class="box">
+    <div class="box2">
+        <p style="font-size: 30px; margin-bottom:20px; ">
+            书名:{{ book_info.title }}
+        </p>
+        <h3 style="margin-bottom: 20px">作者简介：</h3>
+        <p style="font-size: 16px; letter-spacing: 1px; margin-bottom: 20px">
+            {{ author_introduce }}
+        </p>
+
+        <h3 style="margin-bottom: 20px">书籍简介：</h3>
+        <p style="font-size: 16px; letter-spacing: 1px">
+            {{ book_introduce }}
+        </p>
+    </div>
+
+</div>
+</body>
+</html>

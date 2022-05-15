@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+
+</head>
+<body>
+<div class="box">
+    <h1 class="text-center">图书管理系统</h1>
+    <div>
+        <form class="form" action="{% url "search" %}" method="post">
+            {% csrf_token %}
+            <div class="search_box">
+                <div class="search">
+                    <input type="text" style="margin-left: 10px" name="book_name">
+                    <input type="submit" style="color: #120405; margin-left: 3px; letter-spacing: 2px"
+                           value="搜索">
+                </div>
+            </div>
+            <a class="add_book" style="margin-left: 20px" href="{% url "add_book" %}">添加书籍</a>
+        </form>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>书籍</th>
+            <th>作者</th>
+            <th>出版社</th>
+            <th>价格</th>
+            <th>年份</th>
+            <th>详情</th>
+            <th>操作</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for books in books_list %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ books.title }}</td>
+                <td>{{ books.author_set.all.last }}</td>
+                <td>{{ books.publisher }}</td>
+                <td>{{ books.price }}</td>
+                <td>{{ books.publisher_day|date:"Y-m-d" }}</td>
+                <td><a href="{% url "details" books.id %}">详情</a></td>
+                <td>
+                    <a href="{% url "edit_book" books.id %}">编辑</a>
+                    <a href="{% url "delete_book" books.id %}">删除</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
