@@ -1,3 +1,3 @@
-from django.test import TestCase
-
-# Create your tests here.
+from books01 import models
+from django.db.models import Value,F
+from django.db.models .functions import Concat

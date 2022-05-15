@@ -14,7 +14,6 @@ from django.db import models
 class Publisher(models.Model):
     name = models.CharField(max_length=32)
     addr = models.CharField(max_length=128)
-    phone = models.IntegerField()
 
     def __str__(self):
         return self.name
@@ -29,6 +28,13 @@ class Author(models.Model):
     # 作者和详情一对一
     introduce = models.CharField(max_length=128)
     book = models.ManyToManyField(to="book")
+
+    # SEX = (
+    #     (1, "男"),
+    #     (2, "女")
+    # )
+    # gender = models.IntegerField(choices=SEX)
+
     def __str__(self):
         return self.name
 
